@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>Oh the places you'll go (for class)</title>
+    
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+    
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+    
+    <style>
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+  
+  </head>
+  
+  <body>
+    
+    <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css' rel='stylesheet' />
+	<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
+
+    <div id='map' style="height:600px; width:900px; margin:0,auto;"></div>
+
+    <script>
+      L.mapbox.accessToken = 'pk.eyJ1Ijoia2VsdmluYWJyb2t3YSIsImEiOiJkcUF1TWlVIn0.YzBtz0O019DJGk3IpFi72g';
+        
+        var geojson = 
+
+          [
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.71079,
+                  37.27154
+                ]
+              },
+              "properties": {
+                "name": "Tyler Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.7109,
+                  37.27019
+                ]
+              },
+              "properties": {
+                "name": "Washington Hall: Anthropology",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.705068,
+                  37.264780
+                ]
+              },
+              "properties": {
+                "name": "Marshall Wythe Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.70996,
+                  37.27015
+                ]
+              },
+              "properties": {
+                "name": "Ewell Hall",
+                "marker-color": "#fc4353",
+                "marker-symbol": "music"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.71,
+                  37.27139
+                ]
+              },
+              "properties": {
+                "name": "Tucker Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.71194,
+                  37.27139
+                ]
+              },
+              "properties": {
+                "name": "James Blair Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.71677,
+                  37.268
+                ]
+              },
+              "properties": {
+                "name": "Jones Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.7225,
+                  37.26972
+                ]
+              },
+              "properties": {
+                "name": "Keck Environmental Field Lab",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.72111,
+                  37.26722
+                ]
+              },
+              "properties": {
+                "name": "Lake Matoaka Art Studio",
+                "marker-symbol": "art-gallery",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.71167,
+                  37.27028
+                ]
+              },
+              "properties": {
+                "name": "McGlothlin-Street Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.71528,
+                  37.26972
+                ]
+              },
+              "properties": {
+                "name": "Millington Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.71694,
+                  37.2675
+                ]
+              },
+              "properties": {
+                "name": "Morton Hall: Government, Economics, History",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.71722,
+                  37.26889
+                ]
+              },
+              "properties": {
+                "name": "Small Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.71833,
+                  37.26861
+                ]
+              },
+              "properties": {
+                "name": "Adair Hall",
+                "marker-symbol": "pitch",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.715301,
+                  37.268379
+                ]
+              },
+              "properties": {
+                "name": "Andrews Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.711278,
+                  37.272165
+                ]
+              },
+              "properties": {
+                "name": "Blow Memorial Hall",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.718305,
+                  37.266253
+                ]
+              },
+              "properties": {
+                "name": "Bussiness School: Business",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.714443,
+                  37.269331
+                ]
+              },
+              "properties": {
+                "name": "ISC: Psychology",
+                "marker-color": "#fc4353"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  -76.709008,
+                  37.270850
+                ]
+              },
+              "properties": {
+                "name": "Wren Building: Religion",
+                "marker-color": "#fc4353"
+              }
+            }
+          ]
+            ;
+        
+      var map = L.mapbox.map('map', 'kelvinabrokwa.335851e7')
+        .setView([37.2700000,-76.715000], 16);
+      
+      var featureGroup = L.featureGroup().addTo(map);
+      
+      // Circle Options
+      var circle_options = {
+        color: '#fc4353',      // Stroke color
+        opacity: 1,         // Stroke opacity
+        weight: 2,         // Stroke weight
+        fillColor: '#fc4353',  // Fill color
+        fillOpacity: 0.    // Fill opacity
+    };
+     
+      var circle_one = L.circle([37.2675, -76.71735], 35, circle_options).addTo(featureGroup); // Government
+      var circle_one = L.circle([37.2678, -76.7172], 35, circle_options).addTo(featureGroup); // Economics
+      var circle_one = L.circle([37.2672, -76.7169], 35, circle_options).addTo(featureGroup); // History
+      var circle_one = L.circle([37.2675, -76.7165], 35, circle_options).addTo(featureGroup);
+      
+      
+
+      // Create array of lat,lon points
+      var line_points = [
+        [37.2675, -76.71694],
+        [37.270850, -76.709008], // Wren Building (Religions)
+        [37.2675, -76.71694],
+        [37.269331,-76.714443], // ISC (Psychology)
+        [37.2675, -76.71694],
+        [37.266253, -76.718305], // Miller (Business)
+        [37.2675, -76.71694],
+        [37.27019,-76.7109], // Washington (Anthropology)
+        [37.2675, -76.71694]
+        
+      ];
+    
+      // Define polyline options
+      // http://leafletjs.com/reference.html#polyline
+      var polyline_options = {
+        color: '#fc4353',
+        opacity: 1,
+        weight: 1
+      }
+    
+      // Defining a polygon here instead of a polyline will connect the
+      // endpoints and fill the path.
+      // http://leafletjs.com/reference.html#polygon
+      var polyline = L.polyline(line_points, polyline_options).addTo(featureGroup);
+    
+      var drawControl = new L.Control.Draw({
+        edit: {
+          featureGroup: featureGroup
+        }
+      }).addTo(map);
+    
+      map.on('draw:created', function(e) {
+          featureGroup.addLayer(e.layer);
+      });
+      
+
+      var featureLayer = L.mapbox.featureLayer({
+        type: 'FeatureCollection',
+        features: geojson
+    })
+    .addTo(map);
+      
+    featureLayer.eachLayer(function(layer) {
+    
+        
+        var content = layer.feature.properties.name;
+        layer.bindPopup(content);
+    });
+      
+      </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  </body>
+</html>

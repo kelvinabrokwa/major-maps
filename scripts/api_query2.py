@@ -19,6 +19,7 @@ counter = 0
 for i in buildings:
 	counter += 1
 	print counter
+	
 	url = 'http://api.geonames.org/search?q=' + i + '&maxRows=10&username=kelvinabrowka'
 	tree = ET.parse(urllib.urlopen(url))
 

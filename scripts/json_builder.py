@@ -2,25 +2,25 @@
 
 import pandas as p
 
-data = p.read_csv('locations.tsv',sep='\t')
+data = p.read_csv('../map_utils/wm_academic.csv')
 output = open('../map_utils/out_json.txt','w')
 
 
 place_name = []
-for i in data.place_name:
+for i in data.building:
 	place_name.append(i)
 
 lat = []
-for i in data.latitude:
+for i in data.lat:
 	i = str(i)
 	lat.append(i)
 
 long_ = []
-for i in data.longitude:
+for i in data.long:
 	i = str(i)
 	long_.append(i)
 
-for i,j,k in zip(place_name,lat,long_):
+for i,j,k in zip(place_name,long_,lat):
 	output.write( \
 		'{' + \
 		'\n' + \
