@@ -6,48 +6,74 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   </head>
   <body>
     <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css' rel='stylesheet' />
     <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
-    <div class="well">
-      <h1>Oh The Places You'll Go (for class)</h1>
-      <p>A geospatial look at interdisciplinary majors!</p>
-      <p>How do you make a liberal artsy school even liberal artsier? You choose an interdisciplinary major! This project looks at requirements for several majors at the College of William & Mary that include classes from other departments.</p>
-      <p>Map designed and implemented using Mapbox Studio. Geospatial information courtesy of GeoNames (thanks ya'll). Shoutout to Python for being my bread and butter.</p>
-      <p>*Click on the markers for building names and locations of classes that count toward each major requirement*</p>
-    </div>
-    <div style="height:30px"></div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">International Relations: Economics, History, Government, Religion, Psychology, Anthropology</h3>
+    <div class="container">
+      <div class="page-header">
+        <h1>Oh The Places You'll Go (for class)</h1>
       </div>
-      <div class="panel-body" id='ir-map' style="height:600px; width:900px; margin:0,auto;"></div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Environmental Science and Policy: Government, Economics, Sociology, Kinesiology, Chemistry, English, Religion, Anthropology</h3>
+      <div class="well">
+        <p>A geospatial look at interdisciplinary majors!</p>
+        <p>How do you make a liberal artsy school even liberal artsier? You choose an interdisciplinary major! This project looks at requirements for several majors at the College of William & Mary that include classes from other departments.</p>
+        <p>Map designed and implemented using Mapbox Studio. Coordinates courtesy of GeoNames and geojson.io (thanks ya'll). Shoutout to Python for being my bread and butter.</p>
+        
+        <p>
+          List of majors: 
+          <a href="#ir">International Relation</a>,
+          <a href="#ensp">Environment Science and Policy</a>,
+          <a href="#math">Mathematics</a>,
+          <a href="#biology">Biology</a>,
+          <a href="#english">English</a>
+        </p>
+        <p>*Click on the markers for building names and classes that count toward each major's requirements*</p>
       </div>
-      <div class="panel-body" id='ensp-map' style="height:600px; width:900px; margin:0,auto;"></div>
+      <a name="ir">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">International Relations: Economics, History, Government, Religion, Psychology, Anthropology</h3>
+          </div>
+          <div class="panel-body" id='ir-map' style="height:600px; margin:0,auto;"></div>
+        </div>
+      </a>
+      <a name="ensp">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Environmental Science and Policy: Government, Economics, Sociology, Kinesiology, Chemistry, English, Religion, Anthropology</h3>
+          </div>
+          <div class="panel-body" id='ensp-map' style="height:600px; margin:0,auto;"></div>
+        </div>
+      </a>
+      <a name="math">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Mathematics: Computer Science, Physics, Economics</h3>
+          </div>
+          <div class="panel-body" id='math-map' style="height:600px; margin:0,auto;"></div>
+        </div>
+      </a>
+      <a name="biology">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Biology: Chemistry, Mathematics</h3>
+          </div>
+          <div id='biology-map' style="height:600px; margin:0,auto;"></div>
+        </div>
+      </a>
+      <a name="english">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">English</h3>
+          </div>
+          <div id='english-map' style="height:600px; margin:0,auto;"></div>
+        </div>
+      </a>
     </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Mathematics: Computer Science, Physics, Economics</h3>
-      </div>
-      <div class="panel-body" id='math-map' style="height:600px; width:900px; margin:0,auto;"></div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Biology: Chemistry, Mathematics</h3>
-      </div>
-      <div id='biology-map' style="height:600px; width:900px; margin:0,auto;"></div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">English</h3>
-      </div>
-      <div id='english-map' style="height:600px; width:900px; margin:0,auto;"></div>
-    </div>
+    
     <script>
       L.mapbox.accessToken = 'pk.eyJ1Ijoia2VsdmluYWJyb2t3YSIsImEiOiJkcUF1TWlVIn0.YzBtz0O019DJGk3IpFi72g';
         
@@ -65,7 +91,7 @@
               },
               "properties": {
                 "name": "Tyler Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -79,21 +105,7 @@
               },
               "properties": {
                 "name": "Washington Hall: Anthropology",
-                "marker-color": "#FF0000"
-              }
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -76.705068,
-                  37.264780
-                ]
-              },
-              "properties": {
-                "name": "Marshall Wythe Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -107,7 +119,7 @@
               },
               "properties": {
                 "name": "Ewell Hall",
-                "marker-color": "#FF0000",
+                "marker-color": "#FF8017",
                 "marker-symbol": "music"
               }
             },
@@ -117,12 +129,12 @@
                 "type": "Point",
                 "coordinates": [
                   -76.71,
-                  37.27139
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "Tucker Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -130,13 +142,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71194,
-                  37.27139
+                  -76.71181619167328,
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "James Blair Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -150,7 +162,7 @@
               },
               "properties": {
                 "name": "Jones Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -164,7 +176,7 @@
               },
               "properties": {
                 "name": "Keck Environmental Field Lab",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -179,7 +191,7 @@
               "properties": {
                 "name": "Lake Matoaka Art Studio",
                 "marker-symbol": "art-gallery",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -187,13 +199,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71167,
-                  37.27028
+                  -76.71179473400115,
+                  37.270138288300345
                 ]
               },
               "properties": {
                 "name": "McGlothlin-Street Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -207,7 +219,7 @@
               },
               "properties": {
                 "name": "Millington Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -221,7 +233,7 @@
               },
               "properties": {
                 "name": "Morton Hall: Government, Economics, History",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -235,7 +247,7 @@
               },
               "properties": {
                 "name": "Small Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -249,7 +261,7 @@
               },
               "properties": {
                 "name": "Adair Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -263,7 +275,7 @@
               },
               "properties": {
                 "name": "Andrews Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -277,7 +289,7 @@
               },
               "properties": {
                 "name": "Blow Memorial Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -291,7 +303,7 @@
               },
               "properties": {
                 "name": "Bussiness School: Business",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -305,7 +317,7 @@
               },
               "properties": {
                 "name": "ISC: Psychology",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -319,7 +331,7 @@
               },
               "properties": {
                 "name": "Wren Building: Religion",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             }
           ]
@@ -328,22 +340,22 @@
       var map = L.mapbox.map('ir-map', 'kelvinabrokwa.335851e7', {
         scrollWheelZoom: false
       })
-        .setView([37.2700000,-76.715000], 16);
+        .setView([37.26820,-76.715000], 17);
       
       var featureGroup = L.featureGroup().addTo(map);
       
       // Circle Options
       var circle_options = {
-        color: '#FF0000',      // Stroke color
+        color: '#FF8017',      // Stroke color
         opacity: 1,         // Stroke opacity
-        weight: 2,         // Stroke weight
-        fillColor: '#FF0000',  // Fill color
+        weight: 4,         // Stroke weight
+        fillColor: '#FF8017',  // Fill color
         fillOpacity: 0.    // Fill opacity
       };
       
-      var circle_one = L.circle([37.2675, -76.71735], 35, circle_options).addTo(featureGroup); // Government
-      var circle_two = L.circle([37.2678, -76.7172], 35, circle_options).addTo(featureGroup); // Economics
-      var circle_three = L.circle([37.2672, -76.7169], 35, circle_options).addTo(featureGroup); // History
+      var circle_one = L.circle([37.2675, -76.71735], 40, circle_options).addTo(featureGroup); // Government
+      var circle_two = L.circle([37.2678, -76.7171], 40, circle_options).addTo(featureGroup); // Economics
+      var circle_three = L.circle([37.2672, -76.7169], 40, circle_options).addTo(featureGroup); // History
       // var circle_four = L.circle([37.2675, -76.7165], 35, circle_options).addTo(featureGroup);
       
       
@@ -365,9 +377,9 @@
       // Define polyline options
       // http://leafletjs.com/reference.html#polyline
       var polyline_options = {
-        color: '#FF0000',
+        color: '#FF8017',
         opacity: 1,
-        weight: 3
+        weight: 4
       }
       
       // Defining a polygon here instead of a polyline will connect the
@@ -417,7 +429,7 @@
               },
               "properties": {
                 "name": "Tyler Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -431,7 +443,7 @@
               },
               "properties": {
                 "name": "Washington Hall: Anthropology",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -445,7 +457,7 @@
               },
               "properties": {
                 "name": "Marshall Wythe Hall: Law",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -459,7 +471,7 @@
               },
               "properties": {
                 "name": "Ewell Hall",
-                "marker-color": "#FF0000",
+                "marker-color": "#FF8017",
                 "marker-symbol": "music"
               }
             },
@@ -469,12 +481,12 @@
                 "type": "Point",
                 "coordinates": [
                   -76.71,
-                  37.27139
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "Tucker Hall: English",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -482,13 +494,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71194,
-                  37.27139
+                  -76.71181619167328,
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "James Blair Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -502,7 +514,7 @@
               },
               "properties": {
                 "name": "Jones Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -516,7 +528,7 @@
               },
               "properties": {
                 "name": "Keck Environmental Field Lab",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -531,7 +543,7 @@
               "properties": {
                 "name": "Lake Matoaka Art Studio",
                 "marker-symbol": "art-gallery",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -539,13 +551,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71167,
-                  37.27028
+                  -76.71179473400115,
+                  37.270138288300345
                 ]
               },
               "properties": {
                 "name": "McGlothlin-Street Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -559,7 +571,7 @@
               },
               "properties": {
                 "name": "Millington Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -573,7 +585,7 @@
               },
               "properties": {
                 "name": "Morton Hall Government, Economics, Sociology, History",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -587,7 +599,7 @@
               },
               "properties": {
                 "name": "Small Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -601,7 +613,7 @@
               },
               "properties": {
                 "name": "Adair Hall: Kinesiology",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -615,7 +627,7 @@
               },
               "properties": {
                 "name": "Andrews Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -629,7 +641,7 @@
               },
               "properties": {
                 "name": "Blow Memorial Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -643,7 +655,7 @@
               },
               "properties": {
                 "name": "Bussiness School",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -657,7 +669,7 @@
               },
               "properties": {
                 "name": "ISC: Chemistry",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -671,7 +683,7 @@
               },
               "properties": {
                 "name": "Wren Building: Religion",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             }
           ]
@@ -680,7 +692,7 @@
       var map = L.mapbox.map('ensp-map', 'kelvinabrokwa.335851e7', {
         scrollWheelZoom: false
       })
-        .setView([37.2700000,-76.715000], 16)
+        .setView([37.2690000,-76.71400], 16)
         
       
       var featureGroup = L.featureGroup().addTo(map);
@@ -694,7 +706,7 @@
         [37.26972,-76.7225],
         [37.27019,-76.7109], // Washington (Anthropology)
         [37.26972,-76.7225], 
-        [37.27139,-76.71], // Tucker (English)
+        [37.271448843303716,-76.71], // Tucker (English)
         [37.26972,-76.7225],
         [37.2675,-76.71694], // Morton (Government)
         [37.26972,-76.7225],
@@ -707,9 +719,9 @@
       // Define polyline options
       // http://leafletjs.com/reference.html#polyline
       var polyline_options = {
-        color: '#FF0000',
+        color: '#FF8017',
         opacity: 1,
-        weight: 3
+        weight: 4
       }
       
       // Defining a polygon here instead of a polyline will connect the
@@ -759,7 +771,7 @@
               },
               "properties": {
                 "name": "Tyler Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -773,21 +785,7 @@
               },
               "properties": {
                 "name": "Washington Hall",
-                "marker-color": "#FF0000"
-              }
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -76.7119,
-                  37.27154
-                ]
-              },
-              "properties": {
-                "name": "Marshall Wythe Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -801,7 +799,7 @@
               },
               "properties": {
                 "name": "Ewell Hall",
-                "marker-color": "#FF0000",
+                "marker-color": "#FF8017",
                 "marker-symbol": "music"
               }
             },
@@ -811,12 +809,12 @@
                 "type": "Point",
                 "coordinates": [
                   -76.71,
-                  37.27139
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "Tucker Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -824,13 +822,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71194,
-                  37.27139
+                  -76.71181619167328,
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "James Blair Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -844,7 +842,7 @@
               },
               "properties": {
                 "name": "Jones Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -858,7 +856,7 @@
               },
               "properties": {
                 "name": "Keck Environmental Field Lab",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -873,7 +871,7 @@
               "properties": {
                 "name": "Lake Matoaka Art Studio",
                 "marker-symbol": "art-gallery",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -881,13 +879,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71167,
-                  37.27028
+                  -76.71179473400115,
+                  37.270138288300345
                 ]
               },
               "properties": {
                 "name": "McGlothlin-Street Hall: Computer Science",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -901,7 +899,7 @@
               },
               "properties": {
                 "name": "Millington Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -915,7 +913,7 @@
               },
               "properties": {
                 "name": "Morton Hall: Economics",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -929,7 +927,7 @@
               },
               "properties": {
                 "name": "Small Hall: Physics",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -943,7 +941,7 @@
               },
               "properties": {
                 "name": "Adair Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -957,7 +955,7 @@
               },
               "properties": {
                 "name": "Andrews Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -971,7 +969,7 @@
               },
               "properties": {
                 "name": "Blow Memorial Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -985,7 +983,7 @@
               },
               "properties": {
                 "name": "Bussiness School",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -999,7 +997,7 @@
               },
               "properties": {
                 "name": "ISC",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1013,7 +1011,7 @@
               },
               "properties": {
                 "name": "Wren Building",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             }
           ]
@@ -1022,14 +1020,14 @@
       var map = L.mapbox.map('math-map', 'kelvinabrokwa.335851e7', {
         scrollWheelZoom: false
       })
-        .setView([37.2700000,-76.715000], 16)
+        .setView([37.2690000,-76.715000], 17)
       
       var featureGroup = L.featureGroup().addTo(map);
       
       // Create array of lat,lon points
       var line_points = [
         [37.268,-76.71677],
-        [37.27028,-76.71167], // McGlothlin Street (Computer Science)
+        [37.270138288300345,-76.71179473400115], // McGlothlin Street (Computer Science)
         [37.268,-76.71677],
         [37.2675,-76.71694], // Morton (Economics)
         [37.268,-76.71677],
@@ -1042,9 +1040,9 @@
       // Define polyline options
       // http://leafletjs.com/reference.html#polyline
       var polyline_options = {
-        color: '#FF0000',
+        color: '#FF8017',
         opacity: 1,
-        weight: 3
+        weight: 4
       }
       
       // Defining a polygon here instead of a polyline will connect the
@@ -1094,7 +1092,7 @@
               },
               "properties": {
                 "name": "Tyler Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1108,21 +1106,7 @@
               },
               "properties": {
                 "name": "Washington Hall",
-                "marker-color": "#FF0000"
-              }
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -76.7119,
-                  37.27154
-                ]
-              },
-              "properties": {
-                "name": "Marshall Wythe Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1136,7 +1120,7 @@
               },
               "properties": {
                 "name": "Ewell Hall",
-                "marker-color": "#FF0000",
+                "marker-color": "#FF8017",
                 "marker-symbol": "music"
               }
             },
@@ -1146,12 +1130,12 @@
                 "type": "Point",
                 "coordinates": [
                   -76.71,
-                  37.27139
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "Tucker Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1159,13 +1143,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71194,
-                  37.27139
+                  -76.71181619167328,
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "James Blair Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1179,7 +1163,7 @@
               },
               "properties": {
                 "name": "Jones Hall: Mathematics",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1193,7 +1177,7 @@
               },
               "properties": {
                 "name": "Keck Environmental Field Lab",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1208,7 +1192,7 @@
               "properties": {
                 "name": "Lake Matoaka Art Studio",
                 "marker-symbol": "art-gallery",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1216,13 +1200,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71167,
-                  37.27028
+                  -76.71179473400115,
+                  37.270138288300345
                 ]
               },
               "properties": {
                 "name": "McGlothlin-Street Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1236,7 +1220,7 @@
               },
               "properties": {
                 "name": "Millington Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1250,7 +1234,7 @@
               },
               "properties": {
                 "name": "Morton Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1263,8 +1247,8 @@
                 ]
               },
               "properties": {
-                "name": "Small Physical Laboratory",
-                "marker-color": "#FF0000"
+                "name": "Small Hall",
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1278,7 +1262,7 @@
               },
               "properties": {
                 "name": "Adair Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1292,7 +1276,7 @@
               },
               "properties": {
                 "name": "Andrews Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1306,7 +1290,7 @@
               },
               "properties": {
                 "name": "Blow Memorial Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1320,7 +1304,7 @@
               },
               "properties": {
                 "name": "Bussiness School",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1334,7 +1318,7 @@
               },
               "properties": {
                 "name": "ISC: Chemistry",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1348,7 +1332,7 @@
               },
               "properties": {
                 "name": "Wren Building",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             }
           ]
@@ -1357,7 +1341,7 @@
       var map = L.mapbox.map('biology-map', 'kelvinabrokwa.335851e7', {
         scrollWheelZoom: false
       })
-        .setView([37.2700000,-76.715000], 16)
+        .setView([37.269000,-76.715000], 18)
         
         
       
@@ -1365,14 +1349,14 @@
       
       // Circle Options
       var circle_options = {
-        color: '#FF0000',      // Stroke color
+        color: '#FF8017',      // Stroke color
         opacity: 1,         // Stroke opacity
-        weight: 2,         // Stroke weight
-        fillColor: '#FF0000',  // Fill color
+        weight: 4,         // Stroke weight
+        fillColor: '#FF8017',  // Fill color
         fillOpacity: 0.    // Fill opacity
       };
       
-      var circle_one = L.circle([37.269331,-76.714], 35, circle_options).addTo(featureGroup); // Chemistry
+      var circle_one = L.circle([37.269331,-76.7140356], 35, circle_options).addTo(featureGroup); // Chemistry
       
       
       
@@ -1386,9 +1370,9 @@
       // Define polyline options
       // http://leafletjs.com/reference.html#polyline
       var polyline_options = {
-        color: '#FF0000',
+        color: '#FF8017',
         opacity: 1,
-        weight: 3
+        weight: 4
       }
       
       // Defining a polygon here instead of a polyline will connect the
@@ -1437,7 +1421,7 @@
               },
               "properties": {
                 "name": "Tyler Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1451,21 +1435,7 @@
               },
               "properties": {
                 "name": "Washington Hall",
-                "marker-color": "#FF0000"
-              }
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -76.7119,
-                  37.27154
-                ]
-              },
-              "properties": {
-                "name": "Marshall Wythe Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1479,7 +1449,7 @@
               },
               "properties": {
                 "name": "Ewell Hall",
-                "marker-color": "#FF0000",
+                "marker-color": "#FF8017",
                 "marker-symbol": "music"
               }
             },
@@ -1489,12 +1459,12 @@
                 "type": "Point",
                 "coordinates": [
                   -76.71,
-                  37.27139
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "Tucker Hall: English",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1502,13 +1472,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71194,
-                  37.27139
+                  -76.71181619167328,
+                  37.271448843303716
                 ]
               },
               "properties": {
                 "name": "James Blair Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1522,7 +1492,7 @@
               },
               "properties": {
                 "name": "Jones Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1536,7 +1506,7 @@
               },
               "properties": {
                 "name": "Keck Environmental Field Lab",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1551,7 +1521,7 @@
               "properties": {
                 "name": "Lake Matoaka Art Studio",
                 "marker-symbol": "art-gallery",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1559,13 +1529,13 @@
               "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  -76.71167,
-                  37.27028
+                  -76.71179473400115,
+                  37.270138288300345
                 ]
               },
               "properties": {
                 "name": "McGlothlin-Street Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1579,7 +1549,7 @@
               },
               "properties": {
                 "name": "Millington Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1593,7 +1563,7 @@
               },
               "properties": {
                 "name": "Morton Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1607,7 +1577,7 @@
               },
               "properties": {
                 "name": "Small Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1621,7 +1591,7 @@
               },
               "properties": {
                 "name": "Adair Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1635,7 +1605,7 @@
               },
               "properties": {
                 "name": "Andrews Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1649,7 +1619,7 @@
               },
               "properties": {
                 "name": "Blow Memorial Hall",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1663,7 +1633,7 @@
               },
               "properties": {
                 "name": "Bussiness School",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1677,7 +1647,7 @@
               },
               "properties": {
                 "name": "ISC",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             },
             {
@@ -1691,7 +1661,7 @@
               },
               "properties": {
                 "name": "Wren Building",
-                "marker-color": "#FF0000"
+                "marker-color": "#FF8017"
               }
             }
           ]
@@ -1700,21 +1670,21 @@
       var map = L.mapbox.map('english-map', 'kelvinabrokwa.335851e7', {
         scrollWheelZoom: false
       })
-        .setView([37.2700000,-76.715000], 16)
+        .setView([37.2712000,-76.710011], 18)
         
       
       var featureGroup = L.featureGroup().addTo(map);
       
       // Circle Options
       var circle_options = {
-        color: '#FF0000',      // Stroke color
+        color: '#FF8017',      // Stroke color
         opacity: 1,         // Stroke opacity
-        weight: 3,         // Stroke weight
-        fillColor: '#FF0000',  // Fill color
+        weight: 4,         // Stroke weight
+        fillColor: '#FF8017',  // Fill color
         fillOpacity: 0.4    // Fill opacity
       };
       
-      var circle_one = L.circle([37.27139,-76.71], 35, circle_options).addTo(featureGroup); // English, mutha******, do you speak it?!
+      var circle_one = L.circle([37.271448843303716,-76.71], 35, circle_options).addTo(featureGroup); // English, mutha******, do you speak it?!
       
       
       
@@ -1728,9 +1698,9 @@
       // Define polyline options
       // http://leafletjs.com/reference.html#polyline
       var polyline_options = {
-        color: '#FF0000',
+        color: '#FF8017',
         opacity: 1,
-        weight: 3
+        weight: 4
       }
       
       // Defining a polygon here instead of a polyline will connect the
@@ -1763,7 +1733,10 @@
       
       
     </script>
-    <p>Checkout https://github.com/kelvinabrokwa/wm-dept-locations for some quick and dirty scripts that brought this project together in just under a week!</p>
+    <div class="well">
+      <p>Checkout <a href="https://github.com/kelvinabrokwa/wm-dept-locations">my Github repository</a>  for some quick and dirty scripts that brought this project together in just under a week! Still a work in progress. "Model your major" app will soon be in developement.</p>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
   </body>
 </html>
