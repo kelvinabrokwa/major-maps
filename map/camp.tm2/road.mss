@@ -1,8 +1,8 @@
 // Basic color palette, from which variations will be derived.
-@motorway:          #852B68;
-@main:              #852B68;
-@street:            #852B68;
-@street_limited:    #852B68;
+@motorway:          #171405;
+@main:              #171405;
+@street:            #171405;
+@street_limited:    #171405;
 
 // ---------------------------------------------------------------------
 
@@ -21,7 +21,7 @@
   ::case[zoom>=6]['mapnik::geometry_type'=2] {
     [class='motorway'] {
       line-join:round;
-      line-color: mix(@motorway, #852B68, 75);
+      line-color: mix(@motorway, #171405, 75);
       #road { line-cap: round; }
       #tunnel { line-dasharray:3,2; }
       [zoom>=6]  { line-width:0.4; }
@@ -35,7 +35,7 @@
     }
     [class='motorway_link'][zoom>=13] {
       line-join:round;
-      line-color: mix(@motorway, #852B68, 75);
+      line-color: mix(@motorway, #171405, 75);
       #road { line-cap: round; }
       #tunnel { line-dasharray:3,2; }
       [zoom>=13] { line-width:1; }
@@ -45,7 +45,7 @@
     }
     [class='main'] {
       line-join:round;
-      line-color: mix(@main, #852B68, 75);
+      line-color: mix(@main, #171405, 75);
       #road { line-cap: round; }
       #tunnel { line-dasharray:3,2; }
       [zoom>=6] { line-width:0.2; }
@@ -76,7 +76,7 @@
       [zoom>=16] { line-width:4; }
     }
     [class='path'][zoom>=12] {
-      line-color: #852B68;
+      line-color: #171405;
       line-dasharray: 2,1;
       [zoom>=16] { line-width: 1.2; }
       [zoom>=17] { line-width: 1.5; }
@@ -121,19 +121,19 @@
     [class='street'][zoom>=12], {
       line-join:round;
       #road, #bridge { line-cap: round; }
-      [zoom>=15] { line-width:2.5; line-color:#852B68; }
+      [zoom>=15] { line-width:2.5; line-color:#171405; }
       [zoom>=16] { line-width:4; }
     }
     [class='street_limited'][zoom>=12], {
       line-join:round;
       #road, #bridge { line-cap: round; }
-      [zoom>=15] { line-width:2.5; line-color:#852B68; }
+      [zoom>=15] { line-width:2.5; line-color:#171405; }
       [zoom>=16] { line-width:4; }
     }
     [class='service'][zoom>=13], {
       line-join:round;
       #road, #bridge { line-cap: round; }
-      [zoom>=16] { line-width:2; line-color:#852B68; }
+      [zoom>=16] { line-width:2; line-color:#171405; }
     }
     [class='major_rail'] {
       line-width: 0.4;

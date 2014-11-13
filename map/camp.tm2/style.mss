@@ -7,7 +7,7 @@
 // Eg. @water is used in the #water and #waterway layers directly, but
 // also in the #water_label and #waterway_label layers inside a color
 // manipulation function to get a darker shade of the same hue.
-@land: #eff1db;
+@land: #F5E9D0;
 @water: #000000;
 
 Map {
@@ -97,7 +97,7 @@ Map {
   // OpenStreetMap, so this layer includes both. The 'class' field
   // is a highly opinionated simplification of the myriad LULC
   // tag combinations into a limited set of general classes.
-  [class='park'] { polygon-fill: #074483; }
+  [class='park'] { polygon-fill: #91CB24; }
   [class='cemetery'] { polygon-fill: mix(#d8e8c8, #ddd, 25%); }
   [class='hospital'] { polygon-fill: #fde; }
   [class='school'] { polygon-fill: #f0e8f8; }
@@ -114,7 +114,7 @@ Map {
 #building [zoom<=15]{
   // At zoom level 13, only large buildings are included in the
   // vector tiles. At zoom level 14+, all buildings are included.
-  polygon-fill: #00e5fa;
+  polygon-fill: #1F959D;
   opacity: 1;
 }
 // Seperate attachments are used to draw buildings with depth
@@ -122,7 +122,7 @@ Map {
 #building [zoom>=14]{
 ::wall { polygon-fill: #000; }
 ::roof {
-  polygon-fill: #00e5fa;
+  polygon-fill: #1F959D;
   polygon-geometry-transform:translate(-1,-1.5);
   polygon-clip:false;  
   line-width: 1;

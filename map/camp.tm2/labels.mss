@@ -196,7 +196,7 @@
 
 // ---------------------------------------------------------------------
 // Points of interest
-
+/*
 #poi_label[zoom=14][scalerank<=1],
 #poi_label[zoom=15][scalerank<=2],
 #poi_label[zoom=16][scalerank<=3],
@@ -229,7 +229,7 @@
     [maki!=null] { text-dy: 8; }
   }
 }
-
+*/
 
 // ---------------------------------------------------------------------
 // Roads
@@ -251,20 +251,20 @@
     shield-file: url('shield/motorway_lg_[reflen].png');
   }
 }
-
+/*
 #road_label {
   text-name: @name;
   text-placement: line;  // text follows line path
   text-face-name: @sans;
   text-fill: #765;
   text-halo-fill: fadeout(#fff, 50%);
-  text-halo-radius: 1;
+  text-halo-radius: .5;
   text-halo-rasterizer: fast;
   text-size: 12;
   text-avoid-edges: true;  // prevents clipped labels at tile edges
-  [zoom>=15] { text-size: 13; }
+  [zoom=15] { text-size: 13; }
 }
-
+*/
 
 // ---------------------------------------------------------------------
 // Water
