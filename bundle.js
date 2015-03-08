@@ -677,16 +677,12 @@ function addFeatures(points, lines) {
 	  features: points
 	})
 	.addTo(map);
-
 	featureLayer.eachLayer(function(layer) {
 	  var content = layer.feature.properties.name;
 	  layer.bindPopup(content);
 	});
-
 	var polyline = L.polyline(lines, polyline_options).addTo(featureGroup);
 }
-
-addFeatures(points['ensp'],lines['ensp']);
 
 function changeSubject(subject) {
 	map.removeLayer(featureGroup); 
@@ -694,18 +690,20 @@ function changeSubject(subject) {
 	featureGroup = L.featureGroup().addTo(map);
 	addFeatures(points[subject], lines[subject]);
 }
-var color = {'backgroundColor': '#000'};
-function resetButtonColor() {
-	$('.button').css(color);
-}
-$('#ir').click(function() { changeSubject('ir'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
-$('#ensp').click(function() { changeSubject('ensp'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
-$('#policy').click(function() { changeSubject('policy'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
-$('#neuro').click(function() { changeSubject('neuro'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
-$('#bio').click(function() { changeSubject('bio'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
-$('#medieval').click(function() { changeSubject('medieval'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
-$('#math').click(function() { changeSubject('math'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
-$('#english').click(function() { changeSubject('english'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
 
+var color = {'backgroundColor': '#91CB24'};
+addFeatures(points['ensp'],lines['ensp']);
+$('#ensp').css(color);
+function resetButtonColor() {
+	$('.button').css({'backgroundColor': '#000'});
+}
+$('#ir').click(function() { changeSubject('ir'); resetButtonColor(); $(this).css(color) });
+$('#ensp').click(function() { changeSubject('ensp'); resetButtonColor(); $(this).css(color) });
+$('#policy').click(function() { changeSubject('policy'); resetButtonColor(); $(this).css(color) });
+$('#neuro').click(function() { changeSubject('neuro'); resetButtonColor(); $(this).css(color) });
+$('#bio').click(function() { changeSubject('bio'); resetButtonColor(); $(this).css(color) });
+$('#medieval').click(function() { changeSubject('medieval'); resetButtonColor(); $(this).css(color) });
+$('#math').click(function() { changeSubject('math'); resetButtonColor(); $(this).css(color) });
+$('#english').click(function() { changeSubject('english'); resetButtonColor(); $(this).css(color) });
 
 },{"./data/lines.js":"/Users/kelvinabrokwa/Documents/Git/wm-dept-locations/data/lines.js","./data/points.js":"/Users/kelvinabrokwa/Documents/Git/wm-dept-locations/data/points.js"}]},{},["/Users/kelvinabrokwa/Documents/Git/wm-dept-locations/index.js"]);
