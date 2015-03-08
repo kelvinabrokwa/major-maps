@@ -1,0 +1,29 @@
+body { 
+	margin: 0; 
+	padding: 0; 
+	font-family: "Courier New";
+}
+
+#map { 
+	position: fixed;
+	top: 0; 
+	bottom: 0; 
+	width: 60%; 
+	float: left;
+}
+
+#options { 
+	width: 40%; 
+	float: right; 
+}
+
+.button { 
+	text-align: center; 
+	height: 15%;
+	max-height: 100%;
+	overflow: hidden;
+	background-color: #000;
+	color: #fff;
+	line-height: 5.5em;
+	border-bottom: 1px solid;
+}
