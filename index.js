@@ -21,9 +21,10 @@ var polyline_options = {
 }
 
 var featureGroup = L.featureGroup().addTo(map);
+var featureLayer;
 
 function addFeatures(points, lines) {
-	var featureLayer = L.mapbox.featureLayer({
+	featureLayer = L.mapbox.featureLayer({
 	  type: 'FeatureCollection',
 	  features: points
 	})
@@ -37,6 +38,24 @@ function addFeatures(points, lines) {
 	var polyline = L.polyline(lines, polyline_options).addTo(featureGroup);
 }
 
-addFeatures(points.ensp,lines.ensp);
+addFeatures(points['ensp'],lines['ensp']);
 
-window.setTimeout(function() {}, 4000)
+function changeSubject(subject) {
+	map.removeLayer(featureGroup); 
+	map.removeLayer(featureLayer);
+	featureGroup = L.featureGroup().addTo(map);
+	addFeatures(points[subject], lines[subject]);
+}
+var color = {'backgroundColor': '#000'};
+function resetButtonColor() {
+	$('.button').css(color);
+}
+$('#ir').click(function() { changeSubject('ir'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
+$('#ensp').click(function() { changeSubject('ensp'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
+$('#policy').click(function() { changeSubject('policy'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
+$('#neuro').click(function() { changeSubject('neuro'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
+$('#bio').click(function() { changeSubject('bio'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
+$('#medieval').click(function() { changeSubject('medieval'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
+$('#math').click(function() { changeSubject('math'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
+$('#english').click(function() { changeSubject('english'); resetButtonColor(); $(this).css({'backgroundColor': '#91CB24'}) });
+
