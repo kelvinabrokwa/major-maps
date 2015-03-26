@@ -1,38 +1,38 @@
 body { 
-	margin: 0; 
-	padding: 0; 
-	font-family: "Courier New";
+  margin: 0; 
+  padding: 0; 
+  font-family: "Courier New";
 }
 
 #map { 
-	position: fixed;
-	top: 0; 
-	bottom: 0; 
-	width: 70%; 
-	float: left;
+  position: fixed;
+  top: 0; 
+  bottom: 0; 
+  width: 70%; 
+  float: left;
 }
 
 #options { 
-	width: 30%; 
-	float: right; 
+  width: 30%; 
+  float: right; 
 }
 
 .button { 
-	text-align: center; 
-	height: 15%;
-	max-height: 100%;
-	overflow: hidden;
-	background-color: #000;
-	color: #fff;
-	border-bottom: 1px solid;
+  text-align: center; 
+  height: 15%;
+  max-height: 100%;
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+  border-bottom: 1px solid;
 }
 
 .button:hover {
-	background-color: #91CB24 !important;;
+  background-color: #91CB24 !important;;
 }
 
 .inner {
-	position: relative;
+  position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
